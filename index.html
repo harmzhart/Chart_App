@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chartisfy</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/custom.css">
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script src="js/main.js"></script>
+</head>
+<body>
+		<div id="container" class="container‐fluid">
+			<header id="banner">
+				<h1>Chartisfy<small>...chart generation made easier...</small></h1>
+			</header>
+
+			<section id="mainContent">
+				<aside class="asideContentLeft"></aside>
+				<section id="mainSect">
+					<div id="contentLeft">
+						<p>
+							<label>Need help? Click here</label>
+							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Help</button>
+						</p>
+						<form id="chartTypeForm">
+							<p>
+								<h5>Please select the type of chart you want:</h5>
+							</p>
+							<select class="form-control" id="chartType">
+								<option>Line Chart</option>
+								<option>Bar Chart</option>
+								<option>Pie Chart</option>
+							</select>
+							<br>
+							<p>
+								<h5>Now supply your x and y axis values:</h5>
+							</p>
+								<div class="form-group">
+	    						<label class="sr-only" for="xAxisInput">X axis</label>
+	    						<input type="text" class="form-control" id="xAxisInput" placeholder="Enter x axis labels/values here">
+	  						</div>
+	  						<div class="form-group">
+	    						<label class="sr-only" for="yAxisInput">Y axis</label>
+	    						<input type="text" class="form-control" id="yAxisInput" placeholder="Enter y axis values here">
+	  						</div>
+	  						<button type="submit" class="btn btn-default" id="formSubmit">Submit</button>
+						</form>
+						<br><br>
+	  					<p><h6><strong>Click the button below to generate your chart</strong></h6></p>
+	  					<button type="button" class="btn btn-success btn-lg btn-block" id="chartGenerator">Generate chart</button>
+					</div>
+					<div id="contentRight">
+						<canvas id="myCanvas"></canvas>
+					</div>
+					<div id="clear">
+						<button id="clearCanvas" class="btn btn-default" value="Clear">Clear</button>
+					</div>
+				</section>
+				<aside class="asideContentRight">
+					
+				</aside>
+			</section>
+
+			<footer id="footerMain">
+				
+			</footer>
+		</div>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">How to generate a chart</h4>
+      </div>
+      <div class="modal-body">
+       	<p><strong>Follow these steps to generate your chart</strong></p>
+       	<p><strong>Step 1:</strong> Select your chart type</p>
+       	<p><strong>Step 2:</strong> Input your X labels/values seperated with commas e.g. June, July, August</p>
+       	<p><strong>Step 3:</strong> Input your Y values seperated with commas e.g. 500, 1000, 15000</p>
+       	<p><strong>Step 4:</strong> Click on submit</p>
+       	<p><strong>Step 5:</strong> Click on generate chart</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
