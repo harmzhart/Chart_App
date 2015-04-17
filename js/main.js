@@ -24,7 +24,7 @@ function init(){
 	//Getting values from input boxes
 	function getInputValues(e) {
 	e.preventDefault(); //this prevents search button default reload onclick
-  var initialX = document.getElementById('xAxisInput').value; //initial x values from textbox
+  	var initialX = document.getElementById('xAxisInput').value; //initial x values from textbox
 	var initialY = document.getElementById('yAxisInput').value; //initial y values from textbox
 
 	//Testing for non-empty input values and process values to return for line chart
@@ -120,33 +120,36 @@ function init(){
   		c.lineTo(xPadding, graph.height - yPadding); // draw a line straigth to the line to form x axis
   		c.lineTo(graph.width, graph.height - yPadding); // draw a line through the path
   		c.stroke(); // stroke the path
-
+		
+		// write x labels with 20px spacing
   		for(var i = 0; i < obj.inputValues.length; i++) {
-  	    c.fillText(obj.inputValues[i].X, getXPixel(i), graph.height - yPadding + 20);
+  	    		c.fillText(obj.inputValues[i].X, getXPixel(i), graph.height - yPadding + 20);
   		}
 
   		c.textAlign = "right"
   		c.textBaseline = "middle";
-  	 
+  	 	
+  	 	//write y values with 10px spacing
   		for(var i = 0; i < getMaxY(); i += 10) {
-  	    c.fillText(i, xPadding - 10, getYPixel(i));
+  	    		c.fillText(i, xPadding - 10, getYPixel(i));
   		}
 
-  		c.strokeStyle = '#f00';
-  		c.beginPath();
-  		c.moveTo(getXPixel(0), getYPixel(obj.inputValues[0].Y));
-  	 
+  		c.strokeStyle = '#f00'; // draw stroke with color
+  		c.beginPath(); // call begin path function for where to begin
+  		c.moveTo(getXPixel(0), getYPixel(obj.inputValues[0].Y)); // end at the specified
+  	 	
   		for(var i = 1; i < obj.inputValues.length; i ++) {
-  	    c.lineTo(getXPixel(i), getYPixel(obj.inputValues[i].Y));
+  	    		c.lineTo(getXPixel(i), getYPixel(obj.inputValues[i].Y));
   		}
-  		c.stroke();
+  		c.stroke(); // stroke it
 
-  		c.fillStyle = '#333';
-  	 
+  		c.fillStyle = '#333'; // fill with this color
+  	 	
+  	 	// this loop draws a circled arc foe the points where x and y values intercept
   		for(var i = 0; i < obj.inputValues.length; i ++) {  
-  	    c.beginPath();
-  	    c.arc(getXPixel(i), getYPixel(obj.inputValues[i].Y), 4, 0, Math.PI * 2, true);
-  	    c.fill();
+  	    		c.beginPath(); // begin here
+  	    		c.arc(getXPixel(i), getYPixel(obj.inputValues[i].Y), 4, 0, Math.PI * 2, true); // calculate here and end
+  	    		c.fill(); // fill with color
   		}
   	document.getElementById('chartGenerator').disabled = true;
 }
@@ -154,9 +157,9 @@ function init(){
 //Draw pie chart function getTotal of input Y
   function getTotal(){
   		var myTotal = 0;
-  		console.log("getTotal array " + arraySplittedYTwo);
+  		//console.log("getTotal array " + arraySplittedYTwo);
   		for (var j = 0; j < arraySplittedYTwo.length; j++) {
-  			myTotal += (typeof arraySplittedYTwo[j] == 'number') ? arraySplittedYTwo[j] : 0;
+  			myTotal += (typeof arraySplittedYTwo[j] == 'number') ? arraySplittedYTwo[j] : 0; // checks if input y is a number then calculates the sum
   		}
   	return myTotal;
   }
