@@ -63,11 +63,13 @@ body {
 }
 
 #myCanvas {
-	width: 300px;
-	height: 200px;
-	margin: 70px;
+	margin: 30px;	
 }
 
 #clearCanvas {
 	float: right;
+}
+
+#chartGenerator {
+	width: 100%;
 }
