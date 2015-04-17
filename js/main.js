@@ -76,7 +76,7 @@ function init(){
 				arraySplittedYTwo.push(Number(arraySplittedY[x]));
 			};
 
-			document.getElementById('chartGenerator').disabled = false; //enable the char generation button
+			document.getElementById('chartGenerator').disabled = false; //enable the chart generation button
 		}
 	}
 }
@@ -84,10 +84,10 @@ function init(){
   //Draw line chart function
   function drawLine() {
 
-  	var xPadding = 30; //padding for x axis and labels
-  	var yPadding = 30; //padding for y axis and labels
+  	var xPadding = 30; //padding for x axis labels
+  	var yPadding = 30; //padding for y axis labels
 
-    //
+    // calculating maximun y 
   	function getMaxY() {		
     	var maxim = 0;
        
@@ -96,29 +96,30 @@ function init(){
           maxim = obj.inputValues[i].Y;
         }
       }
-       
+       // y is in increamentents and rounded up to ten
       maxim += 10 - maxim % 10;
       return maxim;
   	}
-
+	// get pixel value for x from user input
   	function getXPixel(val) {
     	return ((graph.width - xPadding) / obj.inputValues.length) * val + (xPadding * 1.5);
   	}
-   
+   	// get pixel y values from input y values
   	function getYPixel(val) {
       return graph.height - (((graph.height - yPadding) / getMaxY()) * val) - yPadding;
   	}
-
-  		c.clearRect(0, 0, graph.width, graph.height);
-  		c.lineWidth = 2;
+		
+		//local variables declaration
+  		c.clearRect(0, 0, graph.width, graph.height); // clears the rectangle on initialize
+  		c.lineWidth = 2; //thickness of line
   		c.strokeStyle = '#333';
   		c.font = '10pt sans-serif';
   		c.textAlign = "center";
   		c.beginPath();
-  		c.moveTo(xPadding, 0);
-  		c.lineTo(xPadding, graph.height - yPadding);
-  		c.lineTo(graph.width, graph.height - yPadding);
-  		c.stroke();
+  		c.moveTo(xPadding, 0); // starting from y paddind a line to x pixels
+  		c.lineTo(xPadding, graph.height - yPadding); // draw a line straigth to the line to form x axis
+  		c.lineTo(graph.width, graph.height - yPadding); // draw a line through the path
+  		c.stroke(); // stroke the path
 
   		for(var i = 0; i < obj.inputValues.length; i++) {
   	    c.fillText(obj.inputValues[i].X, getXPixel(i), graph.height - yPadding + 20);
