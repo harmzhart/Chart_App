@@ -47,7 +47,15 @@ function init(){
     		item["X"] = x_labels[i];
     		item["Y"] = Number(y_values[i]); //convert y_values to number
     		obj.inputValues.push(item); //add each element into array obj
-    	};
+        //console.log(item.length);
+      };
+
+      // check for non integer y axis values
+      for(var i = 0; i < obj.inputValues.length; i++) {
+        if(obj.inputValues[i].Y < 0) {
+          alert("Input values for y axis must be a number and must be greater than 0");
+        }
+      }//loop ends
 
     	document.getElementById('chartGenerator').disabled = false; //this enables chart generation button
   		return obj; // object obj is return by this function
@@ -83,14 +91,14 @@ function init(){
   	function getMaxY() {		
     	var maxim = 0;
        
-    for(var i = 0; i < obj.inputValues.length; i++) {
-      if(obj.inputValues[i].Y > maxim) {
-        maxim = obj.inputValues[i].Y;
+      for(var i = 0; i < obj.inputValues.length; i++) {
+        if(obj.inputValues[i].Y > maxim) {
+          maxim = obj.inputValues[i].Y;
+        }
       }
-    }
        
-     maxim += 10 - maxim % 10;
-     return maxim;
+      maxim += 10 - maxim % 10;
+      return maxim;
   	}
 
   	function getXPixel(val) {
